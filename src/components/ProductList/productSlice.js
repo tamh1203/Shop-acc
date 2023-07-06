@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
-import { apiURL } from "../../constans"
+
 
 const productSlice = createSlice({
   name: "productlist",
@@ -29,6 +29,13 @@ const productSlice = createSlice({
       .addCase(addProduct.rejected, (state, action) => {
         console.log("call loi")
       })
+      .addCase(delProduct.fulfilled, (state, action) => {
+        state.list = state.list.filter(item => item.id !== action.payload)
+        console.log(action.payload);
+      })
+      .addCase(delProduct.rejected, (state, action) => {
+        console.log("call loi")
+      })
   }
 
 })
@@ -43,22 +50,31 @@ const callAPI = createAsyncThunk(
 
 const addProduct = createAsyncThunk(
   "addProduct",
-  async () => {
-    const res = await axios.post("https://64966e6c83d4c69925a2cb54.mockapi.io/product")
-    return res.data
+  async (form) => {
+    const res = await axios.request({
+      method: "POST",
+      url: "https://64966e6c83d4c69925a2cb54.mockapi.io/product/",
+      headers: {},
+      data: {
+        "createdAt": "2023-07-05T17:58:28.032Z",
+        "title": `${form.title}`,
+        "price": `${form.price}`,
+        "des": `${form.des}`,
+        "img": `${form.img}`,
+      }
+    })
+    return
   }
 )
 
 
 const delProduct = createAsyncThunk(
-  "delProdutc",
-  async (data) => {
-    const res = await axios.delete(`"https://64966e6c83d4c69925a2cb54.mockapi.io/product",&id= ${data.id}`)
-    return data
+  "delProduct",
+  async (id) => {
+    const res = await axios.delete(`https://64966e6c83d4c69925a2cb54.mockapi.io/product/${id}`)
+    return id
   }
-
 )
-
 export default productSlice
 export { callAPI, delProduct, addProduct }
 

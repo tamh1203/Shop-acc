@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listSelector } from "../../redux/selector";
 import { NavLink } from "react-router-dom";
-import { addProduct } from "./productSlice";
+import { addItem, delItem } from "../../redux/reducers";
 
 const ProductDetail = () => {
   const [cart, setCart] = useState("Add to Cart")
@@ -13,11 +13,16 @@ const ProductDetail = () => {
   const list = useSelector(listSelector)
   const detail = list.find(item => item.id == id)
   console.log(detail);
+  const handleCart = (list) => {
+    if (cart === "Add to Cart") {
+      dispatch(addItem(list));
+      setCart("Remove from Cart");
+    } else {
+      dispatch(delItem(list));
+      setCart("Add to Cart");
+    }
+  };
 
-  function handleClick(detail) {
-    dispatch(addProduct(detail))
-    console.log("handle:", detail);
-  }
   return <>
     <div className="container my-5 py-3">
       <div className="row">
@@ -45,10 +50,10 @@ const ProductDetail = () => {
               className="btn btn-outline-dark my-5"
               style={{ width: "200px" }}
               onClick={() => {
-                handleClick(detail)
+                handleCart(detail)
               }}
             >
-              CHO VÀO GIỎ HÀNG
+              {cart}
             </button>
           </div>
 

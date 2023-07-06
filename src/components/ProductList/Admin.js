@@ -6,7 +6,8 @@ import { listSelector } from '../../redux/selector'
 import { NavLink } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
 import { delProduct, addProduct } from './productSlice'
-export default function ProductList() {
+
+export default function Admin() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const list = useSelector(listSelector)
@@ -21,23 +22,19 @@ export default function ProductList() {
         <div className="card-body text-center">
           <h5 className="card-title">{item.title}</h5>
           <p className="lead" style={{ color: "red", fontWeight: "blod" }} >Giá : {item.price}</p>
-          <NavLink
-            to={`/products/${item.id}`}
-            className="btn btn-outline-primary"
-          >
-            Buy Now
-          </NavLink>
-          {/* <button onClick={() => dispatch(delProduct(item.id))}>Del</button> */}
+          <button className='btn btn-danger' onClick={() => dispatch(delProduct(item.id))}>Delete</button>
         </div>
       </div>
     );
   };
   return <>
+
     <div>
       <div className="container py-5">
         <div className="row">
           <div className="col-12 text-center">
             <h1>Key Board</h1>
+            <NavLink className="btn btn-info ms-5 mt-5 " to="/addproduct">Add Product</NavLink>
             <hr />
           </div>
         </div>
