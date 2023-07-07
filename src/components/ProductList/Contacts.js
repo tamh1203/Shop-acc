@@ -1,5 +1,7 @@
 import React from "react";
-
+import { NavLink } from "react-router-dom";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 const Contact = () => {
   return (
     <div>
@@ -29,7 +31,7 @@ const Contact = () => {
                   type="text"
                   className="form-control"
                   id="exampleForm"
-                  placeholder="John Smith"
+                  placeholder="Full Name"
                 />
               </div>
               <div className="mb-3">
@@ -53,9 +55,9 @@ const Contact = () => {
                   rows="5"
                 ></textarea>
               </div>
-              <button type="submit" className="btn btn-outline-primary">
+              <NavLink type="submit" onClick={() => toastr.warning('Success Message')} className="btn btn-outline-primary">
                 Send Message
-              </button>
+              </NavLink>
             </form>
           </div>
         </div>

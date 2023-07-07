@@ -56,14 +56,13 @@ const addProduct = createAsyncThunk(
       url: "https://64966e6c83d4c69925a2cb54.mockapi.io/product/",
       headers: {},
       data: {
-        "createdAt": "2023-07-05T17:58:28.032Z",
         "title": `${form.title}`,
         "price": `${form.price}`,
         "des": `${form.des}`,
         "img": `${form.img}`,
       }
     })
-    return
+    return res.data
   }
 )
 

@@ -5,7 +5,7 @@ import { callAPI } from './productSlice'
 import { listSelector } from '../../redux/selector'
 import { NavLink } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
-import { delProduct, addProduct } from './productSlice'
+import { delProduct } from './productSlice'
 
 export default function Admin() {
   const dispatch = useDispatch()
@@ -23,6 +23,7 @@ export default function Admin() {
           <h5 className="card-title">{item.title}</h5>
           <p className="lead" style={{ color: "red", fontWeight: "blod" }} >Giá : {item.price}</p>
           <button className='btn btn-danger' onClick={() => dispatch(delProduct(item.id))}>Delete</button>
+          <button className='btn btn-secondary ms-3'>Edit</button>
         </div>
       </div>
     );
@@ -34,7 +35,7 @@ export default function Admin() {
         <div className="row">
           <div className="col-12 text-center">
             <h1>Key Board</h1>
-            <NavLink className="btn btn-info ms-5 mt-5 " to="/addproduct">Add Product</NavLink>
+            <NavLink className="btn btn-primary ms-5 mt-5 " to="/addproduct">Add Product</NavLink>
             <hr />
           </div>
         </div>

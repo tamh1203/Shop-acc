@@ -3,6 +3,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addProduct } from './productSlice'
+import { useNavigate } from 'react-router-dom'
 
 export default function AddProduct() {
   const [form, setForm] = useState({
@@ -12,11 +13,19 @@ export default function AddProduct() {
     price: ""
   })
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   function handleSubmit(e) {
     e.preventDefault()
     dispatch(addProduct(form))
-    setForm("")
-    console.log(form)
+    setForm({
+      title: "",
+      des: "",
+      img: "",
+      price: ""
+    })
+    // navigate("/products")
+    console.log(form, setForm)
+
   }
 
   return <>

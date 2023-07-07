@@ -20,7 +20,7 @@ export default function ProductList() {
         <img src={item.img} className="card-img-top" alt={item.title} />
         <div className="card-body text-center">
           <h5 className="card-title">{item.title}</h5>
-          <p className="lead" style={{ color: "red", fontWeight: "blod" }} >Giá : {item.price}</p>
+          <p className="lead fw-bold" style={{ color: "red" }} >Giá : {item.price}</p>
           <NavLink
             to={`/products/${item.id}`}
             className="btn btn-outline-primary"
