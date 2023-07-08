@@ -16,6 +16,13 @@ const Home = () => {
                 Aenean scelerisque felis ut orci condimentum laoreet. Integer nisi nisl, convallis et augue sit amet,
                 lobortis semper quam.Aenean scelerisque felis ut orci condimentum laoreet. Integer nisi nisl, convallis et augue sit amet,
                 lobortis semper quam.
+                Aenean scelerisque felis ut orci condimentum laoreet. Integer nisi nisl, convallis et augue sit amet,
+                lobortis semper quam.Aenean scelerisque felis ut orci condimentum laoreet. Integer nisi nisl, convallis et augue sit amet,
+                lobortis semper quam.  Aenean scelerisque felis ut orci condimentum laoreet. Integer nisi nisl, convallis et augue sit amet,
+                lobortis semper quam.Aenean scelerisque felis ut orci condimentum laoreet. Integer nisi nisl, convallis et augue sit amet,
+                lobortis semper quam.  Aenean scelerisque felis ut orci condimentum laoreet. Integer nisi nisl, convallis et augue sit amet,
+                lobortis semper quam.Aenean scelerisque felis ut orci condimentum laoreet. Integer nisi nisl, convallis et augue sit amet,
+                lobortis semper quam.
               </p>
               <div className="btn-box btn1">
                 <NavLink to="/contacts" className="btn1">
@@ -30,7 +37,7 @@ const Home = () => {
         </div>
       </div>
       <div>
-        <ProductList />
+        {/* <ProductList /> */}
       </div>
     </div>
 

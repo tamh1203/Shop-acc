@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listSelector } from "../../redux/selector";
 import { NavLink } from "react-router-dom";
-import { addItem } from "../Cart/CartSlice";
+import { addItem, delItem } from "../Cart/CartSlice";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductDetail = () => {
   const [cart, setCart] = useState("Add to Cart")
@@ -12,12 +14,13 @@ const ProductDetail = () => {
   const { id } = useParams()
   const list = useSelector(listSelector)
   const detail = list.find(item => item.id == id)
-  console.log(list);
+  console.log(detail);
   const handleCart = (detail) => {
     dispatch(addItem({ ...detail }));
-    console.log(detail);
+    toast.success("Add to cart success !!!")
+    setCart("Remove form Cart")
   }
-
+  console.log(detail);
   return <>
     <div className="container my-5 py-3">
       <div className="row">
@@ -51,12 +54,11 @@ const ProductDetail = () => {
               {cart}
             </button>
           </div>
-
+          <ToastContainer />
         </div>
       </div>
     </div>
   </>
 }
-
 
 export default ProductDetail
